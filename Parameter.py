@@ -1,29 +1,29 @@
 import pandas as pd
+import os
 
-"""Collect the results, tabulate it and will create a csv file
+
+def create_csv(ping, upload, download):
+    """Collect the results, tabulate it and will create a csv file
 
     Parameters:
-    The parameter in the table are Duration, Ping, Upload and Download
+    The parameter in the table are Ping, Upload and Download
 
     Returns:
     It will return the value from the arguments provided and create a csv file of the results in a tabular form
 
    """
+    data = {'Ping': [ping],
+            'Upload': [upload],
+            'Download': [download]}
+
+    table = pd.DataFrame(data, columns=['Ping', 'Upload', 'Download'])
+
+    if not os.path.exists(r'C:\Users\benai\Documents\internet-connection-forecaster\Parameter.csv'):
+        table.to_csv(
+            r'C:\Users\benai\Documents\internet-connection-forecaster\Parameter.csv', index=False, header=True)
+    else:
+        table.to_csv(r'C:\Users\benai\Documents\internet-connection-forecaster\Parameter.csv',
+                     index=False, mode='a', header=False)
 
 
-def __init__(self, duration, ping, upload, download):
-    self.duration = duration
-    self.ping = ping
-    self.upload = upload
-    self.download = download
-
-
-data = {'Duration': [self.duration],
-        'Ping': [self.ping],
-        'Upload': [self.upload],
-        'Download': [self.download]}
-
-
-Parameter = pd.DataFrame(
-    data, columns=['Duration', 'Ping', 'Upload', 'Download'])
-Parameter.to_csv('C:\Users\benai\Documents\internet-connection-forecaster')
+create_csv(10, 10, 19)
