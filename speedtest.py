@@ -1,21 +1,18 @@
-import speedtest as st
-import time 
+import pyspeedtest as st
+import time
 
-def speedtest (duration, interval):
-
+def check_speed(duration, intervals):
     """Summary or Description of the Function
 
-    Parameters:
-    argument1 (int): Description of arg1
+        Parameters:
+        argument1 (int): Description of arg1
 
-    Returns:
-    int:Returning value
-
+        Returns:
+        int:Returning value
    """
-    number_of_loops = duration//interval
-    print(number_of_loops)
+    number_of_loops = duration//intervals
     for _ in range(number_of_loops):
-        print('okay')
-        time.sleep(interval)
+        
+        time.sleep(intervals)
 
-speedtest(10, 2)
+check_speed(5, 2)
