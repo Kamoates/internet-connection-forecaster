@@ -1,6 +1,9 @@
-import pandas as pd
 import os
-path = os.getcwd()
+try:
+    import pandas as pd
+except ModuleNotFoundError:
+    os.system('python -m pip install pandas')
+    import padas as pd
 
 
 def create_csv(data, file_name):
@@ -13,27 +16,10 @@ def create_csv(data, file_name):
     It will return the value from the arguments provided and create a csv file of the results in a tabular form
 
    """
-    try:
-
-        table = pd.DataFrame({'Ping': [data['ping']], 'Upload': [data['upload']], 'Download': [
-                             data['download']]}, columns=['Ping', 'Upload', 'Download'])
-
-        name = '/' + file_name + '.csv'
-
-        if not os.path.exists(path + name):
-            table.to_csv(path + name, index=False, header=True)
-        else:
-            table.to_csv(path + name, index=False, mode='a', header=False)
-
-    except ImportError:
-        print('Please import pandas')
 
     table = pd.DataFrame(data=data)
 
-    if not os.path.exists(path + file_name):
+    if not os.path.exists(os.getcwd() + file_name):
         table.to_csv(file_name, index=False)
     else:
-
-        table.to_csv(path + file_name, index=False, mode='a', header=False)
-
         table.to_csv(file_name, index=False, mode='a')
