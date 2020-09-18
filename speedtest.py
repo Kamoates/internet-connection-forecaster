@@ -5,13 +5,13 @@ from collections import defaultdict
 
 
 def check_speed(duration, intervals):
-    """Summary or Description of the Function
+    """Gather the data and link the result to the dictionary.
 
         Parameters:
-        argument1 (int): Description of arg1
+        The parameter includes the result of duration and interval and the speed of upload, download and ping.
 
         Returns:
-        int:Returning value
+        Import the value from the equation and associate it in the dictionary.
    """
         
     number_of_loops = duration//intervals
