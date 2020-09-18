@@ -13,13 +13,17 @@ def create_csv(data, file_name):
     It will return the value from the arguments provided and create a csv file of the results in a tabular form
 
    """
+    try:
 
-    table = pd.DataFrame({'Ping': [data['ping']], 'Upload': [data['upload']], 'Download': [
-                         data['download']]}, columns=['Ping', 'Upload', 'Download'])
+        table = pd.DataFrame({'Ping': [data['ping']], 'Upload': [data['upload']], 'Download': [
+                             data['download']]}, columns=['Ping', 'Upload', 'Download'])
 
-    name = '/' + file_name + '.csv'
+        name = '/' + file_name + '.csv'
 
-    if not os.path.exists(path + name):
-        table.to_csv(path + name, index=False, header=True)
-    else:
-        table.to_csv(path + name, index=False, mode='a', header=False)
+        if not os.path.exists(path + name):
+            table.to_csv(path + name, index=False, header=True)
+        else:
+            table.to_csv(path + name, index=False, mode='a', header=False)
+
+    except ImportError:
+        print('Please import pandas')
