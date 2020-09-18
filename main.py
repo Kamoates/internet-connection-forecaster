@@ -8,7 +8,7 @@ def set_params(params):
     This function gets the duration and intervals from the command line
 
         Parameters:
-        params (dict:float): the number of intervals
+        params (tuple(float)): the number of duration and intervals
 
         Returns:
         null:Returning value
