@@ -14,12 +14,9 @@ def create_csv(data, file_name):
 
    """
 
-    table = pd.DataFrame({'Ping': [data['ping']], 'Upload': [data['upload']], 'Download': [
-                         data['download']]}, columns=['Ping', 'Upload', 'Download'])
+    table = pd.DataFrame(data=data)
 
-    name = '/' + file_name + '.csv'
-
-    if not os.path.exists(path + name):
-        table.to_csv(path + name, index=False, header=True)
+    if not os.path.exists(path + file_name):
+        table.to_csv(path + file_name, index=False, header=True)
     else:
-        table.to_csv(path + name, index=False, mode='a', header=False)
+        table.to_csv(path + file_name, index=False, mode='a', header=False)
