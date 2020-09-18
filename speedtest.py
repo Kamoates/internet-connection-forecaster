@@ -36,7 +36,4 @@ def check_speed(duration, intervals):
 
         time.sleep(intervals)
 
-    print(result_dictionary)
-
-
-check_speed(10, 2)
+    return result_dictionary
