@@ -1,5 +1,6 @@
 import time
 import subprocess
+import os
 from collections import defaultdict
 
 
@@ -16,24 +17,17 @@ def check_speed(duration, intervals):
     number_of_loops = duration//intervals
     speedtest_command = 'speedtest-cli --csv'
 
+    # check if speedtest-cli is installed in the system
+    try:
+        subprocess.Popen('speedtest-cli')
+        
+    # install speedtest-cli if not found
+    except FileNotFoundError:
+        os.system('python -m pip install speedtes-cli')
+
     # getting headers
     headers = subprocess.Popen('speedtest-cli --csv-header',
                                stdout=subprocess.PIPE).stdout.readline().rstrip().decode('UTF-8').split(',')
-
-    try:
-        headers = subprocess.Popen('speedtest-cli --csv-header',
-                               stdout=subprocess.PIPE).stdout.readline().rstrip().decode('UTF-8').split(',')
-        (stdout, sterr) = headers.communicate()
-    except calledProcessorError as err:
-        print("Error occured: + err.stderr")
-
-    except OSError as e:
-        print ("OSError > ",e.errno)
-        print ("OSError > ",e.strerror)
-        print ("OSError > ",e.filename)
-    except:
-        print ("Error > ",sys.exc_info()[0])
-
 
     # initialized dictionary
     result_dictionary = defaultdict(list)
@@ -53,6 +47,3 @@ def check_speed(duration, intervals):
         time.sleep(intervals)
 
     return result_dictionary
-
-check_speed(10, 2)
-print(check_speed(10, 2))
