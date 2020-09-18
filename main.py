@@ -9,21 +9,21 @@ except ModuleNotFoundError:
 
 
 @click.command()
-@click.option('-p', '--params', nargs=3)
+@click.option('-p', '--params', nargs=3, help='Duration:FLOAT Interval:FLOAT filename:String')
 def set_params(params):
     """
-    This function gets the duration and intervals from the command line
+    Collect all parameters from the command line interface (CLI) then execute check_speed() and create_csv()
 
         Parameters:
         params (tuple): the number of duration and intervals, and the filename
 
         Returns:
-        null:Returning value
+        null: Returning value
 
     """
     # checking internet speed
     try:
-        data = check_speed(int(params[0]), int(params[1]))
+        data = check_speed(float(params[0]), float(params[1]))
         filename = params[2]
     except ValueError as e:
         print(f'Error: {e}, please check your inputs!')
