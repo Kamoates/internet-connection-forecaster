@@ -4,7 +4,7 @@ from Create_CSV_File import create_csv
 
 try:
     import click
-except ModuleNotFoundError as e:
+except ModuleNotFoundError:
     os.system('python -m pip install click')
 
 
@@ -26,7 +26,7 @@ def set_params(params):
         data = check_speed(int(params[0]), int(params[1]))
         filename = params[2]
     except ValueError as e:
-        print(f'Error: {e}')
+        print(f'Error: {e}, please check your inputs!')
         return
 
     # saving data to csv
