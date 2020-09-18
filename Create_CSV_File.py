@@ -15,7 +15,6 @@ def create_csv(data, file_name):
    """
     try:
 
-<<<<<<< HEAD
         table = pd.DataFrame({'Ping': [data['ping']], 'Upload': [data['upload']], 'Download': [
                              data['download']]}, columns=['Ping', 'Upload', 'Download'])
 
@@ -28,11 +27,13 @@ def create_csv(data, file_name):
 
     except ImportError:
         print('Please import pandas')
-=======
+
     table = pd.DataFrame(data=data)
 
     if not os.path.exists(path + file_name):
-        table.to_csv(path + file_name, index=False, header=True)
+        table.to_csv(file_name, index=False)
     else:
+
         table.to_csv(path + file_name, index=False, mode='a', header=False)
->>>>>>> d73480baff00138f808146f7ce8942bf67c219c4
+
+        table.to_csv(file_name, index=False, mode='a')
