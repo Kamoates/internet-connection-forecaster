@@ -22,4 +22,4 @@ def create_csv(data, file_name):
     if not os.path.exists(os.getcwd() + file_name):
         table.to_csv(file_name, index=False)
     else:
-        table.to_csv(file_name, index=False, mode='a')
+        table.to_csv(file_name, index=False, mode='a', header=False)
