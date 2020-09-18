@@ -14,12 +14,14 @@ def create_csv(data, file_name):
    """
     speedtest = {'Ping': [data['ping']],
                  'Upload': [data['upload']],
-                 'Download': [data['download']]}
+                 'Download': [data['download']]}  # <--- paremove lahat ng to
 
+    # <--- papalit ng pd.DataFrame(data=data)
     table = pd.DataFrame(speedtest, columns=['Ping', 'Upload', 'Download'])
 
     name = '/' + file_name + '.csv'
 
+    # <--- papalit ng path to
     if not os.path.exists(r'C:\Users\benai\Documents\internet-connection-forecaster' + name):
         table.to_csv(r'C:\Users\benai\Documents\internet-connection-forecaster' +
                      name, index=False, header=True)
