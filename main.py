@@ -23,8 +23,8 @@ def set_params(params):
     """
     # checking internet speed
     try:
-        data = check_speed(float(params[0]), float(params[1]))
-        filename = params[2]
+        data = check_speed(int(params[0]), int(params[1]))
+        filename = params[2] + '.csv'
     except ValueError as e:
         print(f'Error: {e}, please check your inputs!')
         return

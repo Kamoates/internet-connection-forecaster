@@ -17,6 +17,6 @@ def create_csv(data, file_name):
     table = pd.DataFrame(data=data)
 
     if not os.path.exists(path + file_name):
-        table.to_csv(path + file_name, index=False, header=True)
+        table.to_csv(file_name, index=False)
     else:
-        table.to_csv(path + file_name, index=False, mode='a', header=False)
+        table.to_csv(file_name, index=False, mode='a')
