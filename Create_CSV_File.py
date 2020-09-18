@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+path = os.getcwd()
 
 
 def create_csv(data, file_name):
@@ -12,19 +13,13 @@ def create_csv(data, file_name):
     It will return the value from the arguments provided and create a csv file of the results in a tabular form
 
    """
-    speedtest = {'Ping': [data['ping']],
-                 'Upload': [data['upload']],
-                 'Download': [data['download']]}  # <--- paremove lahat ng to
 
-    # <--- papalit ng pd.DataFrame(data=data)
-    table = pd.DataFrame(speedtest, columns=['Ping', 'Upload', 'Download'])
+    table = pd.DataFrame({'Ping': [data['ping']], 'Upload': [data['upload']], 'Download': [
+                         data['download']]}, columns=['Ping', 'Upload', 'Download'])
 
     name = '/' + file_name + '.csv'
 
-    # <--- papalit ng path to
-    if not os.path.exists(r'C:\Users\benai\Documents\internet-connection-forecaster' + name):
-        table.to_csv(r'C:\Users\benai\Documents\internet-connection-forecaster' +
-                     name, index=False, header=True)
+    if not os.path.exists(path + name):
+        table.to_csv(path + name, index=False, header=True)
     else:
-        table.to_csv(r'C:\Users\benai\Documents\internet-connection-forecaster' +
-                     name, index=False, mode='a', header=False)
+        table.to_csv(path + name, index=False, mode='a', header=False)
