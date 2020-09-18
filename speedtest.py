@@ -12,12 +12,28 @@ def check_speed(duration, intervals):
         Returns:
         int:Returning value
    """
+        
     number_of_loops = duration//intervals
     speedtest_command = 'speedtest-cli --csv'
 
     # getting headers
     headers = subprocess.Popen('speedtest-cli --csv-header',
                                stdout=subprocess.PIPE).stdout.readline().rstrip().decode('UTF-8').split(',')
+
+    try:
+        headers = subprocess.Popen('speedtest-cli --csv-header',
+                               stdout=subprocess.PIPE).stdout.readline().rstrip().decode('UTF-8').split(',')
+        (stdout, sterr) = headers.communicate()
+    except calledProcessorError as err:
+        print("Error occured: + err.stderr")
+
+    except OSError as e:
+        print ("OSError > ",e.errno)
+        print ("OSError > ",e.strerror)
+        print ("OSError > ",e.filename)
+    except:
+        print ("Error > ",sys.exc_info()[0])
+
 
     # initialized dictionary
     result_dictionary = defaultdict(list)
@@ -37,3 +53,6 @@ def check_speed(duration, intervals):
         time.sleep(intervals)
 
     return result_dictionary
+
+check_speed(10, 2)
+print(check_speed(10, 2))
