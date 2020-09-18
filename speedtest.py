@@ -19,7 +19,7 @@ def check_speed(duration, intervals):
 
     # check if speedtest-cli is installed in the system
     try:
-        subprocess.Popen('speedtest-cli')
+        subprocess.Popen('speedtest-cli --version')
         
     # install speedtest-cli if not found
     except FileNotFoundError:
@@ -32,8 +32,8 @@ def check_speed(duration, intervals):
     # initialized dictionary
     result_dictionary = defaultdict(list)
 
-    for _ in range(number_of_loops):
-        print('Running ...')
+    for i in range(number_of_loops):
+        print(f'{i+1}/{number_of_loops} Running speedtest ...')
         raw_result = subprocess.Popen(
             speedtest_command, stdout=subprocess.PIPE).stdout
         result = raw_result.readline().rstrip().decode('UTF-8').split(',')

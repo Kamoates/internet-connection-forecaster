@@ -16,10 +16,10 @@ def create_csv(data, file_name):
     It will return the value from the arguments provided and create a csv file of the results in a tabular form
 
    """
-
     table = pd.DataFrame(data=data)
+    path = f'data/{file_name}'
 
-    if not os.path.exists(os.getcwd() + file_name):
-        table.to_csv(file_name, index=False)
+    if not os.path.exists(path):
+        table.to_csv(path, index=False)
     else:
-        table.to_csv(file_name, index=False, mode='a', header=False)
+        table.to_csv(path, index=False, mode='a', header=False)
