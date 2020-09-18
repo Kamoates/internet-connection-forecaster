@@ -1,1 +1,1 @@
-Internet Connection Forecaster v1
+Internet Connection Forecaster v.1
