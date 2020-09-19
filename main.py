@@ -10,7 +10,7 @@ except ModuleNotFoundError:
 
 
 @click.command()
-@click.option('-p', '--params', nargs=3, help='Duration:FLOAT Interval:FLOAT filename:String')
+@click.option('-p', '--params', nargs=3, help='Duration(mins):FLOAT Interval(mins):FLOAT filename:String')
 def set_params(params):
     """
     Collect all parameters from the command line interface (CLI) then execute check_speed() and create_csv()
