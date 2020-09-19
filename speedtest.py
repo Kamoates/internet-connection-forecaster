@@ -23,7 +23,7 @@ def check_speed(duration, intervals):
         
     # install speedtest-cli if not found
     except FileNotFoundError:
-        os.system('python -m pip install speedtes-cli')
+        os.system('python -m pip install speedtest-cli')
 
     # getting headers
     headers = subprocess.Popen('speedtest-cli --csv-header',
