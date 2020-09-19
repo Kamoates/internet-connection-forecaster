@@ -17,6 +17,9 @@ def create_csv(data, file_name):
 
    """
     table = pd.DataFrame(data=data)
+
+    # show collected data
+    print('Collected data:', table, sep='\n')
     path = f'data/{file_name}'
 
     if not os.path.exists(path):

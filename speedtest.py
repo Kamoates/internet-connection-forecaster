@@ -44,6 +44,7 @@ def check_speed(duration, intervals):
 
         print('Done!\n')
 
-        time.sleep(intervals)
+        # convert intervals from minute to seconds
+        time.sleep(intervals*60)
 
     return result_dictionary
