@@ -15,7 +15,7 @@ def check_speed(duration, intervals):
    """
         
     number_of_loops = duration//intervals
-    speedtest_command = 'speedtest-cli --csv'
+    speedtest_command = 'speedtest-cli --csv-delimiter "?" --csv'
 
     # check if speedtest-cli is installed in the system
     try:
@@ -34,9 +34,14 @@ def check_speed(duration, intervals):
 
     for i in range(number_of_loops):
         print(f'{i+1}/{number_of_loops} Running speedtest ...')
+
         raw_result = subprocess.Popen(
             speedtest_command, stdout=subprocess.PIPE).stdout
-        result = raw_result.readline().rstrip().decode('UTF-8').split(',')
+        result = raw_result.readline().rstrip().decode('UTF-8').split('?')
+
+        print(result)
+        if len(result) != len(headers):
+            continue
 
         # add result to the dictionary
         for header, value in zip(headers, result):
@@ -45,6 +50,6 @@ def check_speed(duration, intervals):
         print('Done!\n')
 
         # convert intervals from minute to seconds
-        time.sleep(intervals*60)
+        time.sleep(intervals * 60)
 
     return result_dictionary
