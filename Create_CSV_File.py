@@ -3,7 +3,7 @@ try:
     import pandas as pd
 except ModuleNotFoundError:
     os.system('python -m pip install pandas')
-    import padas as pd
+    import pandas as pd
 
 
 def create_csv(data, file_name):
