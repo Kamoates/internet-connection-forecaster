@@ -1,5 +1,5 @@
 import os
-from speedtest import check_speed
+from check_speed import check_speed
 from Create_CSV_File import create_csv
 
 try:
